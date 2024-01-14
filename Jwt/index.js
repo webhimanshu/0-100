@@ -5,7 +5,7 @@ const PORT = 7689;
 const SECRET_KEY = '7Hk2LpRn5Qt8WvYz1Fc4AeXg7Aj0Ds5G';
 app.use(express.json());
 
-const ALL_USERS = [{// in memory
+const ALL_USERS = [{ // in memory
     username: "Devoid",
     password: "adshjjhb7868&",
     name: 'Himanshu'

@@ -39,7 +39,7 @@ app.get('/users', (req, resp) => {
         const username = decoded.username;
         resp.status(200).json({ //return a list of users  other than this username
             result: ALL_USERS.filter((value) => {
-                if (value.username == username) {
+                if (value.username === username) {
                     return false;
                 } else {
                     return true;
@@ -61,7 +61,7 @@ app.post('/users', (req, resp) => {
     }
 
 
-    const token = jwt.sign({ username: username }, SECRET_KEY);// create token and return
+    const token = jwt.sign({ username: username , email:'xyz@gam.com' , name:"akash"}, SECRET_KEY);// create token and return
     resp.json({ token });
 })
 

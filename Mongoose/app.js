@@ -78,4 +78,14 @@ const getDocument = async () => {
         console.log(error)
     }
 }
-getDocument();
+// getDocument();
+
+// Comparison Query Operator
+const getDocumentUsingQueryOperator = async () => {
+    // const result = await Test.find({ videos: { $gt: 40 } });
+    // const result = await Test.find({ videos: { $eq: 40 } });
+    const result = await Test.find({ videos: { $nin: [40] } });
+    console.log(result);
+}
+getDocumentUsingQueryOperator();
+

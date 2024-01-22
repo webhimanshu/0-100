@@ -87,5 +87,12 @@ const getDocumentUsingQueryOperator = async () => {
     const result = await Test.find({ videos: { $nin: [40] } });
     console.log(result);
 }
-getDocumentUsingQueryOperator();
+// getDocumentUsingQueryOperator();
+
+// Logical Opearators
+const getDocumentUsingLogicalOperator = async () => {
+    const result = await Test.find({ $and: [{ ctype: "Back end" }, { author: 'sonu' }] });
+    console.log(result);
+}
+getDocumentUsingLogicalOperator(); 
 

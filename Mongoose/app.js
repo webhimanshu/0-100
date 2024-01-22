@@ -114,5 +114,17 @@ const getDocumentUsingSortingAndCount = async () => {
         console.log("🚀 ~ getDocumentUsingSortingAndCount ~ error:", error)
     }
 }
-getDocumentUsingSortingAndCount();
+// getDocumentUsingSortingAndCount();
 
+
+
+// to update Document
+const updateDocument = async () => {
+    try {
+        const result = await Test.updateOne({ name: 'expressjs' }, { $set: { name: 'EXPRESSJS', active: false } });
+        console.log(result)
+    } catch (error) {
+        console.log("🚀 ~ updateDocument ~ error:", error)
+    }
+}
+updateDocument();

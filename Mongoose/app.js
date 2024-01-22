@@ -67,5 +67,15 @@ const createDocument = async () => {
     }
 }
 //  Create Document
-createDocument();
+// createDocument();
 
+// To Get Document
+const getDocument = async () => { 
+    try {
+        const result = await Test.find({ name: 'java' }).select({ ctype: "Back end" });
+        console.log("Get Document :-", result);
+    } catch (error) {
+        console.log(error)
+    }
+}
+getDocument();

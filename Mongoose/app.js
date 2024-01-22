@@ -127,4 +127,14 @@ const updateDocument = async () => {
         console.log("🚀 ~ updateDocument ~ error:", error)
     }
 }
-updateDocument();
+// updateDocument();
+
+const deleteDocument = async () => {
+    try {
+        const result = await Test.deleteMany({ name: 'EXPRESSJS' });
+        console.log(result)
+    } catch (error) {
+        console.log(error)
+    }
+}
+// deleteDocument();

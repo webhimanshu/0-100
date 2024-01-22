@@ -70,7 +70,7 @@ const createDocument = async () => {
 // createDocument();
 
 // To Get Document
-const getDocument = async () => { 
+const getDocument = async () => {
     try {
         const result = await Test.find({ name: 'java' }).select({ ctype: "Back end" });
         console.log("Get Document :-", result);
@@ -82,17 +82,37 @@ const getDocument = async () => {
 
 // Comparison Query Operator
 const getDocumentUsingQueryOperator = async () => {
-    // const result = await Test.find({ videos: { $gt: 40 } });
-    // const result = await Test.find({ videos: { $eq: 40 } });
-    const result = await Test.find({ videos: { $nin: [40] } });
-    console.log(result);
+    try {
+        // const result = await Test.find({ videos: { $gt: 40 } });
+        // const result = await Test.find({ videos: { $eq: 40 } });
+        const result = await Test.find({ videos: { $nin: [40] } });
+        console.log(result);
+    } catch (error) {
+        console.log("🚀 ~ getDocumentUsingQueryOperator ~ error:", error)
+    }
 }
 // getDocumentUsingQueryOperator();
 
 // Logical Opearators
 const getDocumentUsingLogicalOperator = async () => {
-    const result = await Test.find({ $and: [{ ctype: "Back end" }, { author: 'sonu' }] });
-    console.log(result);
+    try {
+        const result = await Test.find({ $and: [{ ctype: "Back end" }, { author: 'sonu' }] });
+        console.log(result);
+    } catch (error) {
+        console.log("🚀 ~ getDocumentUsingLogicalOperator ~ error:", error)
+    }
 }
-getDocumentUsingLogicalOperator(); 
+// getDocumentUsingLogicalOperator(); 
+
+
+const getDocumentUsingSortingAndCount = async () => {
+    try {
+        // const result = await Test.find({ $and: [{ ctype: "Back end" }, { author: 'sonu' }] }).countDocuments();
+        const result = await Test.find({ $and: [{ ctype: "Back end" }, { author: 'sonu' }] }).sort({ name: 1 });
+        console.log(result);
+    } catch (error) {
+        console.log("🚀 ~ getDocumentUsingSortingAndCount ~ error:", error)
+    }
+}
+getDocumentUsingSortingAndCount();
 

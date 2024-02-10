@@ -9,10 +9,32 @@ mongoose.connect('mongodb://localhost:27017/one').then(() => {
 const test = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true,
+        lowercase: true,
+        trim: true,
+        minLength: [2, "Minimum 2 character"],
+        maxLength: 30,
+        // enum :['frontend' , 'backend' , 'db']
     },
     ctype: String,
-    videos: Number,
+    videos: {
+        type : Number,
+        // validate(value){// custom validation
+        //   if(value < 0 ){
+        //     throw new Error('Videos count should not be negative.')
+        //   }
+        // }
+           
+        
+        validate : {
+            validator : function (value){
+                return value.length < 0;
+            },
+            message :'videos count should not be negative'
+        }
+
+    },
     author: String,
     active: Boolean,
     date: {
@@ -28,10 +50,10 @@ const Test = new mongoose.model('Test', test);
 const createDocument = async () => {
     try {
         const reactPlaylist = new Test({
-            name: 'Nodejs',
+            name: 'ds',
             ctype: 'Back end',
             videos: 50,
-            author: 'Tapa tap',
+            author: 'Rajesh',
             active: false,
         })
 
@@ -39,7 +61,7 @@ const createDocument = async () => {
             name: 'Nodejs',
             ctype: 'Back end',
             videos: 50,
-            author: 'Tapa tap',
+            author: 'Rajesh',
             active: true,
         })
 
@@ -67,7 +89,7 @@ const createDocument = async () => {
     }
 }
 //  Create Document
-// createDocument();
+createDocument();
 
 // To Get Document
 const getDocument = async () => {
@@ -131,10 +153,11 @@ const updateDocument = async () => {
 
 const deleteDocument = async () => {
     try {
-        const result = await Test.deleteMany({ name: 'EXPRESSJS' });
+        // const result = await Test.deleteMany({ name: 'EXPRESSJS' });
+        const result = await Test.findByIdAndDelete({ _id: '65a8d9999e55376e6ba6bdd5' });
         console.log(result)
     } catch (error) {
         console.log(error)
     }
 }
-// deleteDocument();
+deleteDocument();
